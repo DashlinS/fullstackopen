@@ -1,9 +1,15 @@
 import React from 'react';
 
-function Total({ exercises }) {
+function Total({ course }) {
+  console.log(`Total ${course.parts[0].exercises}`);
   return (
     <div>
-      <p>Number of exercises {exercises[0] + exercises[1] + exercises[2]}</p>
+      <p>
+        Number of exercises{' '}
+        {course.parts[0].exercises +
+          course.parts[1].exercises +
+          course.parts[2].exercises}
+      </p>
     </div>
   );
 }
