@@ -1,7 +1,6 @@
 import React from 'react';
 
 function Total({ course }) {
-  console.log(`Total ${course.parts[0].exercises}`);
   return (
     <div>
       <p>
