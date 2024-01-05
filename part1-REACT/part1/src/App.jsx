@@ -7,9 +7,9 @@ import { useState } from "react"
 
 const App = () => {
   const [counter, setCounter] = useState(0)
-
   const increaseCounter = () => setCounter(counter + 1)
   const resetCounter = () => setCounter(0)
+  const decreaseCounter = () => setCounter(counter > 0 ? counter - 1 : counter)
 
   const course = {
     name: 'Half Stack application development',
@@ -37,7 +37,7 @@ const App = () => {
       <Display counter={counter}/>
       <Button onClick={increaseCounter} text={'+'}/>
       <Button onClick={resetCounter} text={'Reset'}/>
-      <Button onClick={() => setCounter(counter - 1)} text={'-'}></Button>
+      <Button onClick={decreaseCounter} text={'-'}></Button>
     </div>
   )
 }
