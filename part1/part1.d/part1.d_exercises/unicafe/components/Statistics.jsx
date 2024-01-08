@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import StatisticLine from '../components/StatisticLine'
+import StatisticLine from './StatisticLine'
 
 function Statistics({stats}) {
   return (
