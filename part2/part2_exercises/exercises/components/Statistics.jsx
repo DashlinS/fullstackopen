@@ -1,4 +1,6 @@
 /* eslint-disable react/prop-types */
+import StatisticLine from '../components/StatisticLine'
+
 function Statistics({stats}) {
   return (
     <>
@@ -9,14 +11,14 @@ function Statistics({stats}) {
         )
        :
        (
-        <div>
-          <p>Good {stats.good}</p>
-          <p>Neutral {stats.neutral}</p>
-          <p>Bad {stats.bad}</p>
-          <p>All {stats.all}</p>
-          <p>Average {stats.all / 3}</p>
-          <p>Positive {stats.positive > 0 ? stats.positive : 0} %</p>
-        </div>
+        <>
+          <StatisticLine text={'Good'} value={stats.good}/>
+          <StatisticLine text={'Neutral'} value={stats.neutral}/>
+          <StatisticLine text={'Bad'} value={stats.bad}/>
+          <StatisticLine text={'All'} value={stats.all}/>
+          <StatisticLine text={'Average'} value={stats.all / 3}/>
+          <StatisticLine text={'Positive'} value={stats.positive}/>  
+        </>
         )
       }
     </>

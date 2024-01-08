@@ -1,33 +1,24 @@
+/* eslint-disable react/prop-types */
+
 import { useState } from 'react'
 import Statistics from '../components/Statistics'
 import Button from '../components/Button'
-// import StatisticLine from '../components/StatisticLine'
+import './App.css'
 
 const App = () => {
   // save clicks of each button to its own state
-  const [good, setGood] = useState(0)
-  const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
+  const [review, setReview] = useState({good: 0, neutral: 0, bad: 0})
 
-  const handleGoodClick = () => {
-    const review = good + 1
-    setGood(review)
-  }
-    const handleNeutralClick = () => {
-    const review = neutral + 1
-    setNeutral(review)
-  }
-    const handleBadClick = () => {
-    const review = bad + 1
-    setBad(review)
-  }
+  const goodReview = () => setReview({...review, good: review.good + 1})
+  const neutralReview = () => setReview({...review, neutral: review.neutral + 1})
+  const badReview = () => setReview({...review, bad: review.bad + 1})
 
   const stats = {
-    good: good,
-    neutral: neutral,
-    bad: bad,
-    all: good + neutral + bad,
-    positive: (good / (good + neutral + bad)) * 100,
+    good: review.good,
+    neutral: review.neutral,
+    bad: review.bad,
+    all: review.good + review.neutral + review.bad,
+    positive: (review.good / (review.good + review.neutral + review.bad)) * 100,
     empty: 'No feedback given.'
   }
 
@@ -35,11 +26,11 @@ const App = () => {
     <>
       <div>
         <h2>Give Feedback</h2>
-        <Button text={'Good'} onHandleClick={handleGoodClick} />
-        <Button text={'Neutral'} onHandleClick={handleNeutralClick} />
-        <Button text={'Bad'} onHandleClick={handleBadClick} />
+        <Button text={'Good'} onHandleClick={goodReview} />
+        <Button text={'Neutral'} onHandleClick={neutralReview} />
+        <Button text={'Bad'} onHandleClick={badReview} />
       </div>
-      <Statistics stats={stats}/>
+      <Statistics stats={stats} />
     </>
   )
 }

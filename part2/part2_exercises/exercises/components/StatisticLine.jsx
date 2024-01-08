@@ -1,8 +1,14 @@
-function StatisticLine() {
+/* eslint-disable react/prop-types */
+function StatisticLine({text, value}) {
   return (
-    <div>
-      
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td>{text}</td>
+          <td>{value}</td>
+        </tr>
+      </tbody>
+    </table>
   )
 }
 
