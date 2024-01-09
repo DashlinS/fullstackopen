@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import Button from './components/Button'
 
+import React from 'react'
+
 const App = () => {
   const anecdotes = [
     'If it hurts, do it more often.',
