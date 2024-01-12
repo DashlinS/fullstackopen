@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import Form from './components/Form'
+import Filter from './components/Filter'
+import People from './components/People'
 
 const App = () => {
   const [persons, setPersons] = useState([
@@ -11,83 +14,47 @@ const App = () => {
   ]) 
   const [personName, setPersonName] = useState('')
   const [number, setNumber] = useState('')
+  const [filteredName, setFilteredName] = useState('')
+  
+  const search = persons.filter(person => person.name.match(capitalizedName(filteredName)))
 
   const addName = (e) => {
     e.preventDefault();
-
-    const name = {
-      name: capitalizedName(),
-      number: number
-    } 
-    //Capitalizes name input and any string with multiple words
-    function capitalizedName(){
-      if(personName.includes(' ')){
-        let myName = personName.split(' ')
-        return myName.map(word => 
-          word.slice(0,1)
-          .toUpperCase() + 
-          word.slice(1))
-          .join(' ')
-      }
-        return personName.slice(0,1).toUpperCase() + personName.slice(1)
-    }
-    
-    //function for filtering existing names
-    const nameExists = persons.filter(person => person.name == name.name)
-    
-    if(nameExists.length === 0 ){
+    // conditional to check if person name exists in phone book
+    if(persons.filter(person => person.name == name.name).length === 0){
+      const name = {
+        name: capitalizedName(personName),
+        number: number
+      } 
       setPersons(persons.concat(name))
     } else {
       window.alert(`${name.name} is already added to Phonebook`)
     }
+    
     setPersonName('')
     setNumber('')
   }
-
-  const filterName = (e) => {
-    return persons.filter(person => person.name === e.target.name)
+  
+  // function to capitalize name given and handle case insensitive requests
+  function capitalizedName(changeName){
+    if(changeName.includes(' ')){
+      let myName = changeName.split(' ')
+      return myName.map(word => 
+        word.slice(0,1)
+        .toUpperCase() + 
+        word.slice(1))
+        .join(' ')
+    }
+      return changeName.slice(0,1).toUpperCase() + changeName.slice(1)
   }
 
   return (
     <div>
       <h1>Phonebook</h1>
-
-      <div>
-        Filter Numbers with: 
-        <input type="text" onChange={filterName}/>
-      </div>
-      
+      <Filter filteredName={filteredName} setFilteredName={setFilteredName}/>
       <h2>Add</h2>
-      <form onSubmit={addName}>
-        <div>
-          Name: 
-          <input
-            placeholder='Name' 
-            value={personName} 
-            onChange={(e) => setPersonName(e.target.value)}
-          />
-        </div>
-        <div>
-          Number: 
-          <input
-            type='tel'
-            placeholder='000-000-0000'
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-            required
-            value={number} 
-            onChange={(e) => setNumber(e.target.value)}
-          />
-        </div>
-        <div>
-          <button type="submit">Add</button>
-        </div>
-      </form>
-      <h2>Numbers</h2>
-      {persons.map((person, i) => 
-        <p key={i}>
-          {person.name} {person.number}
-        </p>
-      )}
+      <Form addName={addName} personName={personName} setPersonName={setPersonName} setNumber={setNumber} number={number} />
+      <People search={search} />
     </div>
   )
 }
