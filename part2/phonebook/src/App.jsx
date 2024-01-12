@@ -2,12 +2,15 @@ import { useState } from 'react'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas',
+      { name: 'Arto Hellas',
+      number: '040-123-4567' },
+      { name: 'Dashlin Sermeil',
+      number: '040-123-4567' },
+      { name: 'Kim Flores',
       number: '040-123-4567' }
   ]) 
   const [personName, setPersonName] = useState('')
   const [number, setNumber] = useState('')
-
 
   const addName = (e) => {
     e.preventDefault();
@@ -35,15 +38,26 @@ const App = () => {
     if(nameExists.length === 0 ){
       setPersons(persons.concat(name))
     } else {
-      window.alert(`${name.name} is already added to phonebook`)
+      window.alert(`${name.name} is already added to Phonebook`)
     }
     setPersonName('')
     setNumber('')
   }
 
+  const filterName = (e) => {
+    return persons.filter(person => person.name === e.target.name)
+  }
+
   return (
     <div>
-      <h2>Phonebook</h2>
+      <h1>Phonebook</h1>
+
+      <div>
+        Filter Numbers with: 
+        <input type="text" onChange={filterName}/>
+      </div>
+      
+      <h2>Add</h2>
       <form onSubmit={addName}>
         <div>
           Name: 
