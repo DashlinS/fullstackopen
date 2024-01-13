@@ -7,10 +7,12 @@ const App = () => {
   const [persons, setPersons] = useState([
       { name: 'Arto Hellas',
       number: '040-123-4567' },
-      { name: 'Dashlin Sermeil',
-      number: '040-123-4567' },
-      { name: 'Kim Flores',
-      number: '040-123-4567' }
+      { name: 'Johnathan March',
+      number: '768-223-4598' },
+      { name: 'John Karlson',
+      number: '617-333-3876' },
+      { name: 'Diego Flor',
+      number: '681-558-9987' }
   ]) 
   const [personName, setPersonName] = useState('')
   const [number, setNumber] = useState('')
@@ -50,10 +52,11 @@ const App = () => {
 
   return (
     <div>
-      <h1>Phonebook</h1>
+      <h2>Phonebook</h2>
       <Filter filteredName={filteredName} setFilteredName={setFilteredName}/>
-      <h2>Add</h2>
+      <h3>Add Name</h3>
       <Form addName={addName} personName={personName} setPersonName={setPersonName} setNumber={setNumber} number={number} />
+      <h3>Numbers</h3>
       <People search={search} />
     </div>
   )
