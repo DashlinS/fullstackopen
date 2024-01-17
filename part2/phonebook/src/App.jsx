@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 import Form from './components/Form'
 import Filter from './components/Filter'
 import People from './components/People'
+import { personServices } from './services/personServices'
+
+const { 
+  getPersons, 
+  createPersons 
+} = personServices
 
 const App = () => {
   const [persons, setPersons] = useState([]) 
@@ -10,26 +15,35 @@ const App = () => {
   const [number, setNumber] = useState('')
   const [filteredName, setFilteredName] = useState('')
   
+
   const search = persons.filter(person => person.name.match(capitalizedName(filteredName)))
 
   useEffect(() => {
-    axios.get('http://localhost:3001/persons')
-    .then(response => {
-      setPersons(response.data)
-    })
+    getPersons()
+    .then(initialPerson => 
+      setPersons(initialPerson)
+    )
   }, [])
 
   const addName = (e) => {
     e.preventDefault();
     // conditional to check if person name exists in phone book
-    if(persons.filter(person => person.name == name.name).length === 0){
-      const name = {
+    if(persons.filter(person => person.name == capitalizedName(personName)).length === 0){
+
+      const personObject = {
         name: capitalizedName(personName),
         number: number
       } 
-      setPersons(persons.concat(name))
+
+      // axios.post(personObject)
+      // .then(response => setPersons(persons.concat(response.data)))
+      createPersons(personObject)
+      .then(initialCreate => 
+        setPersons(persons.concat(initialCreate))
+      )
+
     } else {
-      window.alert(`${name.name} is already added to Phonebook`)
+      window.alert(`${personName} is already added to Phonebook`)
     }
     
     setPersonName('')

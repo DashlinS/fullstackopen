@@ -2,8 +2,8 @@
 function People({ search }) {
   return (
     <>
-      {search.map((person, i) => 
-        <p key={i}>
+      {search.map((person) => 
+        <p key={person.id}>
           {person.name} {person.number}
         </p>
       )}
