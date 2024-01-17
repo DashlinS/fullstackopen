@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react'
+import axios from 'axios'
 import Form from './components/Form'
 import Filter from './components/Filter'
 import People from './components/People'
 import { personServices } from './services/personServices'
 
 const { 
+  url,
   getPersons, 
-  createPersons 
+  createPersons,
+  deletePersons 
 } = personServices
 
 const App = () => {
@@ -16,7 +19,7 @@ const App = () => {
   const [filteredName, setFilteredName] = useState('')
   
 
-  const search = persons.filter(person => person.name.match(capitalizedName(filteredName)))
+  const handleSearch = persons.filter(person => person.name.match(capitalizeName(filteredName)))
 
   useEffect(() => {
     getPersons()
@@ -28,10 +31,10 @@ const App = () => {
   const addName = (e) => {
     e.preventDefault();
     // conditional to check if person name exists in phone book
-    if(persons.filter(person => person.name == capitalizedName(personName)).length === 0){
+    if(persons.filter(person => person.name == capitalizeName(personName)).length === 0){
 
       const personObject = {
-        name: capitalizedName(personName),
+        name: capitalizeName(personName),
         number: number
       } 
 
@@ -51,7 +54,7 @@ const App = () => {
   }
   
   // function to capitalize name given and handle case insensitive requests
-  function capitalizedName(changeName){
+  function capitalizeName(changeName){
     if(changeName.includes(' ')){
       let myName = changeName.split(' ')
       return myName.map(word => 
@@ -63,6 +66,15 @@ const App = () => {
       return changeName.slice(0,1).toUpperCase() + changeName.slice(1)
   }
 
+  const handleDelete = (id, person) => {
+    const newPersons = persons.filter(person => person.id !== id)
+    const confirm = window.confirm(`Delete ${person}'s Contact Information?`)
+    if(confirm){
+      deletePersons(id).then(setPersons(newPersons))
+    }
+    return;
+  }
+
   return (
     <div>
       <h2>Phonebook</h2>
@@ -70,7 +82,7 @@ const App = () => {
       <h3>Add Name</h3>
       <Form addName={addName} personName={personName} setPersonName={setPersonName} setNumber={setNumber} number={number} />
       <h3>Numbers</h3>
-      <People search={search} />
+      <People onSearch={handleSearch} onDelete={handleDelete} />
     </div>
   )
 }

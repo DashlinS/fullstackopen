@@ -1,10 +1,11 @@
 /* eslint-disable react/prop-types */
-function People({ search }) {
+function People({ onSearch, onDelete }) {
   return (
     <>
-      {search.map((person) => 
+      {onSearch.map((person) => 
         <p key={person.id}>
           {person.name} {person.number}
+          <button onClick={() => onDelete(person.id, person.name)}>Delete</button>
         </p>
       )}
     </>
