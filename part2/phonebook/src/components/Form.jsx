@@ -1,8 +1,8 @@
 /* eslint-disable react/prop-types */
-function Form({ addName, personName, setPersonName, setNumber, number }) {
+function Form({ onAddName, personName, setPersonName, setNumber, number }) {
   return (
     <>
-     <form onSubmit={addName}>
+     <form onSubmit={onAddName}>
         <div>
           Name: 
           <input

@@ -12,14 +12,20 @@ const createPersons = (newPerson) => {
   return request.then((response) => response.data);
 };
 
+const updatePersons = (id, updateNum) => {
+  const request = axios.put(`${url}/${id}`, updateNum);
+  return request.then((response) => response.data);
+};
+
 const deletePersons = (id) => {
-  const request = axios.delete(`${url}/${id}`)
-  return request
-}
+  const request = axios.delete(`${url}/${id}`);
+  return request;
+};
 
 export const personServices = {
   url,
   getPersons,
   createPersons,
-  deletePersons
+  updatePersons,
+  deletePersons,
 };
