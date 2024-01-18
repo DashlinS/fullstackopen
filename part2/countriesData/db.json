@@ -1,0 +1,436 @@
+[
+    {
+        "name": {
+            "common": "Fiji",
+            "official": "Republic of Fiji",
+            "nativeName": {
+                "eng": {
+                    "official": "Republic of Fiji",
+                    "common": "Fiji"
+                },
+                "fij": {
+                    "official": "Matanitu Tugalala o Viti",
+                    "common": "Viti"
+                },
+                "hif": {
+                    "official": "रिपब्लिक ऑफ फीजी",
+                    "common": "फिजी"
+                }
+            }
+        },
+        "tld": [
+            ".fj"
+        ],
+        "cca2": "FJ",
+        "ccn3": "242",
+        "cca3": "FJI",
+        "cioc": "FIJ",
+        "independent": true,
+        "status": "officially-assigned",
+        "unMember": true,
+        "currencies": {
+            "FJD": {
+                "name": "Fijian dollar",
+                "symbol": "$"
+            }
+        },
+        "idd": {
+            "root": "+6",
+            "suffixes": [
+                "79"
+            ]
+        },
+        "capital": [
+            "Suva"
+        ],
+        "altSpellings": [
+            "FJ",
+            "Viti",
+            "Republic of Fiji",
+            "Matanitu ko Viti",
+            "Fijī Gaṇarājya"
+        ],
+        "region": "Oceania",
+        "subregion": "Melanesia",
+        "languages": {
+            "eng": "English",
+            "fij": "Fijian",
+            "hif": "Fiji Hindi"
+        },
+        "translations": {
+            "ara": {
+                "official": "جمهورية جزر فيجي",
+                "common": "فيجي"
+            },
+            "bre": {
+                "official": "Republik Fidji",
+                "common": "Fidji"
+            },
+            "ces": {
+                "official": "Republika Fidžijských ostrovů",
+                "common": "Fidži"
+            },
+            "cym": {
+                "official": "Republic of Fiji",
+                "common": "Fiji"
+            },
+            "deu": {
+                "official": "Republik Fidschi",
+                "common": "Fidschi"
+            },
+            "est": {
+                "official": "Fidži Vabariik",
+                "common": "Fidži"
+            },
+            "fin": {
+                "official": "Fidžin tasavalta",
+                "common": "Fidži"
+            },
+            "fra": {
+                "official": "République des Fidji",
+                "common": "Fidji"
+            },
+            "hrv": {
+                "official": "Republika Fidži",
+                "common": "Fiđi"
+            },
+            "hun": {
+                "official": "Fidzsi-szigeteki Köztársaság",
+                "common": "Fidzsi-szigetek"
+            },
+            "ita": {
+                "official": "Repubblica di Figi",
+                "common": "Figi"
+            },
+            "jpn": {
+                "official": "フィジー共和国",
+                "common": "フィジー"
+            },
+            "kor": {
+                "official": "피지 공화국",
+                "common": "피지"
+            },
+            "nld": {
+                "official": "Republiek Fiji",
+                "common": "Fiji"
+            },
+            "per": {
+                "official": "جمهوری جزایر فیجی",
+                "common": "فیجی"
+            },
+            "pol": {
+                "official": "Republika Fidżi",
+                "common": "Fidżi"
+            },
+            "por": {
+                "official": "República de Fiji",
+                "common": "Fiji"
+            },
+            "rus": {
+                "official": "Республика Фиджи",
+                "common": "Фиджи"
+            },
+            "slk": {
+                "official": "Fiǆijská republika",
+                "common": "Fiǆi"
+            },
+            "spa": {
+                "official": "República de Fiji",
+                "common": "Fiyi"
+            },
+            "srp": {
+                "official": "Република Фиџи",
+                "common": "Фиџи"
+            },
+            "swe": {
+                "official": "Republiken Fiji",
+                "common": "Fiji"
+            },
+            "tur": {
+                "official": "Fiji Cumhuriyeti",
+                "common": "Fiji"
+            },
+            "urd": {
+                "official": "جمہوریہ فجی",
+                "common": "فجی"
+            },
+            "zho": {
+                "official": "斐济共和国",
+                "common": "斐济"
+            }
+        },
+        "latlng": [
+            17.7134,
+            178.065
+        ],
+        "landlocked": false,
+        "area": 18272,
+        "demonyms": {
+            "eng": {
+                "f": "Fijian",
+                "m": "Fijian"
+            },
+            "fra": {
+                "f": "Fidjienne",
+                "m": "Fidjien"
+            }
+        },
+        "flag": "🇫🇯",
+        "maps": {
+            "googleMaps": "https://goo.gl/maps/r9fhDqoLZdg1zmE99",
+            "openStreetMaps": "https://www.openstreetmap.org/relation/571747"
+        },
+        "population": 896444,
+        "gini": {
+            "2013": 36.7
+        },
+        "fifa": "FIJ",
+        "car": {
+            "signs": [
+                "FJI"
+            ],
+            "side": "left"
+        },
+        "timezones": [
+            "UTC+12:00"
+        ],
+        "continents": [
+            "Oceania"
+        ],
+        "flags": {
+            "png": "https://flagcdn.com/w320/fj.png",
+            "svg": "https://flagcdn.com/fj.svg",
+            "alt": "The flag of Fiji has a light blue field. It features the flag of the United Kingdom — the Union Jack — in the canton and the shield of the national coat of arms centered in the fly half."
+        },
+        "coatOfArms": {
+            "png": "https://mainfacts.com/media/images/coats_of_arms/fj.png",
+            "svg": "https://mainfacts.com/media/images/coats_of_arms/fj.svg"
+        },
+        "startOfWeek": "monday",
+        "capitalInfo": {
+            "latlng": [
+                -18.13,
+                178.42
+            ]
+        }
+    },
+    {
+        "name": {
+            "common": "Finland",
+            "official": "Republic of Finland",
+            "nativeName": {
+                "fin": {
+                    "official": "Suomen tasavalta",
+                    "common": "Suomi"
+                },
+                "swe": {
+                    "official": "Republiken Finland",
+                    "common": "Finland"
+                }
+            }
+        },
+        "tld": [
+            ".fi"
+        ],
+        "cca2": "FI",
+        "ccn3": "246",
+        "cca3": "FIN",
+        "cioc": "FIN",
+        "independent": true,
+        "status": "officially-assigned",
+        "unMember": true,
+        "currencies": {
+            "EUR": {
+                "name": "Euro",
+                "symbol": "€"
+            }
+        },
+        "idd": {
+            "root": "+3",
+            "suffixes": [
+                "58"
+            ]
+        },
+        "capital": [
+            "Helsinki"
+        ],
+        "altSpellings": [
+            "FI",
+            "Suomi",
+            "Republic of Finland",
+            "Suomen tasavalta",
+            "Republiken Finland"
+        ],
+        "region": "Europe",
+        "subregion": "Northern Europe",
+        "languages": {
+            "fin": "Finnish",
+            "swe": "Swedish"
+        },
+        "translations": {
+            "ara": {
+                "official": "جمهورية فنلندا",
+                "common": "فنلندا"
+            },
+            "bre": {
+                "official": "Republik Finland",
+                "common": "Finland"
+            },
+            "ces": {
+                "official": "Finská republika",
+                "common": "Finsko"
+            },
+            "cym": {
+                "official": "Republic of Finland",
+                "common": "Finland"
+            },
+            "deu": {
+                "official": "Republik Finnland",
+                "common": "Finnland"
+            },
+            "est": {
+                "official": "Soome Vabariik",
+                "common": "Soome"
+            },
+            "fin": {
+                "official": "Suomen tasavalta",
+                "common": "Suomi"
+            },
+            "fra": {
+                "official": "République de Finlande",
+                "common": "Finlande"
+            },
+            "hrv": {
+                "official": "Republika Finska",
+                "common": "Finska"
+            },
+            "hun": {
+                "official": "Finn Köztársaság",
+                "common": "Finnország"
+            },
+            "ita": {
+                "official": "Repubblica di Finlandia",
+                "common": "Finlandia"
+            },
+            "jpn": {
+                "official": "フィンランド共和国",
+                "common": "フィンランド"
+            },
+            "kor": {
+                "official": "핀란드 공화국",
+                "common": "핀란드"
+            },
+            "nld": {
+                "official": "Republiek Finland",
+                "common": "Finland"
+            },
+            "per": {
+                "official": "جمهوری فنلاند",
+                "common": "فنلاند"
+            },
+            "pol": {
+                "official": "Republika Finlandii",
+                "common": "Finlandia"
+            },
+            "por": {
+                "official": "República da Finlândia",
+                "common": "Finlândia"
+            },
+            "rus": {
+                "official": "Финляндская Республика",
+                "common": "Финляндия"
+            },
+            "slk": {
+                "official": "Fínska republika",
+                "common": "Fínsko"
+            },
+            "spa": {
+                "official": "República de Finlandia",
+                "common": "Finlandia"
+            },
+            "srp": {
+                "official": "Република Финска",
+                "common": "Финска"
+            },
+            "swe": {
+                "official": "Republiken Finland",
+                "common": "Finland"
+            },
+            "tur": {
+                "official": "Finlandiya Cumhuriyeti",
+                "common": "Finlandiya"
+            },
+            "urd": {
+                "official": "جمہوریہ فن لینڈ",
+                "common": "فن لینڈ"
+            },
+            "zho": {
+                "official": "芬兰共和国",
+                "common": "芬兰"
+            }
+        },
+        "latlng": [
+            64,
+            26
+        ],
+        "landlocked": false,
+        "borders": [
+            "NOR",
+            "SWE",
+            "RUS"
+        ],
+        "area": 338424,
+        "demonyms": {
+            "eng": {
+                "f": "Finnish",
+                "m": "Finnish"
+            },
+            "fra": {
+                "f": "Finlandaise",
+                "m": "Finlandais"
+            }
+        },
+        "flag": "🇫🇮",
+        "maps": {
+            "googleMaps": "https://goo.gl/maps/HjgWDCNKRAYHrkMn8",
+            "openStreetMaps": "openstreetmap.org/relation/54224"
+        },
+        "population": 5530719,
+        "gini": {
+            "2018": 27.3
+        },
+        "fifa": "FIN",
+        "car": {
+            "signs": [
+                "FIN"
+            ],
+            "side": "right"
+        },
+        "timezones": [
+            "UTC+02:00"
+        ],
+        "continents": [
+            "Europe"
+        ],
+        "flags": {
+            "png": "https://flagcdn.com/w320/fi.png",
+            "svg": "https://flagcdn.com/fi.svg",
+            "alt": "The flag of Finland has a white field with a large blue cross that extend to the edges of the field. The vertical part of this cross is offset towards the hoist side."
+        },
+        "coatOfArms": {
+            "png": "https://mainfacts.com/media/images/coats_of_arms/fi.png",
+            "svg": "https://mainfacts.com/media/images/coats_of_arms/fi.svg"
+        },
+        "startOfWeek": "monday",
+        "capitalInfo": {
+            "latlng": [
+                60.17,
+                24.93
+            ]
+        },
+        "postalCode": {
+            "format": "#####",
+            "regex": "^(?:FI)*(\\d{5})$"
+        }
+    }
+]
