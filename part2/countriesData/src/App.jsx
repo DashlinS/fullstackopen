@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
+import Countries from "./components/countries"
 import axios from "axios"
-
 
 function App() {
   const [countries, setCountries] = useState([])
@@ -16,6 +16,9 @@ function App() {
         setCountries(places)
       })
     }
+    else {
+      setCountries([])
+    }
   }, [value])
 
   const addInput = (e) => {
@@ -29,11 +32,7 @@ function App() {
       <form>
         Find Countries <input type="search" value={value} onChange={addInput}/>
       </form>
-      {countries.map((country, i) => (
-        <p key={i}>
-          {country.name.common}
-        </p>
-      ))}
+    <Countries countries={countries}/>
     </>
   )
 }
