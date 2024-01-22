@@ -1,7 +1,29 @@
 const express = require('express');
+const morgan = require('morgan');
+
 const app = express();
 
-const persons = [
+app.use(
+  morgan(`:method :url :status :res[content-length] - :response-time ms`)
+);
+
+const requestLogger = (request, response, next) => {
+  console.log('Method:', request.method);
+  console.log('Path:  ', request.path);
+  console.log('Body:  ', request.body);
+  console.log('---');
+  next();
+};
+
+const unknownEndpoint = (request, response) => {
+  response.status(404).send({ error: 'unknown endpoint' });
+};
+
+app.use(requestLogger);
+//needed for http post requests
+app.use(express.json());
+
+let persons = [
   {
     id: 1,
     name: 'Arto Hellas',
@@ -24,13 +46,19 @@ const persons = [
   },
 ];
 
+//create generate id function
+const generateId = () => {
+  const maxId = persons.length > 0 ? Math.floor(Math.random() * 1000) + 1 : 0;
+  return maxId;
+};
+
 app.get('/info', (request, response) => {
   const date = new Date();
 
   response.send(
     `<body>
-      <p>This phone book has info for ${persons.length} people</p>
-      <p>${date}</p>
+    <p>This phone book has info for ${persons.length} people</p>
+    <p>${date}</p>
     </body>`
   );
 });
@@ -46,9 +74,49 @@ app.get('/api/persons/:id', (request, response) => {
   if (person) {
     response.json(person);
   } else {
+    //send status 404 and end
     response.status(404).end();
   }
 });
+
+app.delete('/api/persons/:id', (request, response) => {
+  const id = Number(request.params.id);
+  //replace old object with new filtered object
+  persons = persons.filter((person) => person.id !== id);
+  console.log('deleting...');
+  //send status for no content and end
+  response.status(204).end();
+});
+
+app.post('/api/persons', (request, response) => {
+  const newPerson = {
+    id: generateId(),
+    name: 'Tom Johnson',
+    number: '23-3232-3232',
+  };
+
+  const exists = persons.filter((person) => person.name === newPerson.name);
+
+  if (exists.length !== 0) {
+    return response.status(409).json({
+      error: 'name must be unique',
+    });
+  } else if (!newPerson.name || !newPerson.number) {
+    return response.status(422).json({
+      error: 'missing number or Name',
+    });
+  }
+
+  persons = persons.concat(newPerson);
+
+  response.json(newPerson);
+
+  morgan.token('param', function (req, res, param) {
+    return req.params[param];
+  });
+});
+
+app.use(unknownEndpoint);
 
 const PORT = 3001;
 app.listen(PORT, () => {
