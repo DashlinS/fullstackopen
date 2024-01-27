@@ -1,6 +1,9 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+require('dotenv').config();
+
+const Note = require('./models/note');
 
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method);
@@ -19,69 +22,44 @@ app.use(cors());
 app.use(requestLogger);
 app.use(express.static('dist'));
 
-let notes = [
-  {
-    id: 1,
-    content: 'HTML is easy',
-    important: true,
-  },
-  {
-    id: 2,
-    content: 'Browser can execute only JavaScript',
-    important: false,
-  },
-  {
-    id: 3,
-    content: 'GET and POST are the most important methods of HTTP protocol',
-    important: true,
-  },
-];
+const date = new Date();
 
-app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>');
-});
+let notes = [];
 
-app.get('/api/notes', (req, res) => {
-  res.json(notes);
+app.get('/api/notes', (request, response) => {
+  Note.find({}).then((notes) => {
+    response.json(notes);
+  });
 });
 
 app.get('/api/notes/:id', (request, response) => {
-  const id = Number(request.params.id);
-  const note = notes.find((note) => note.id === id);
-  if (note) {
+  Note.findById(request.params.id).then((note) => {
     response.json(note);
-  } else {
-    response.status(404).end();
-    // response.status(400).send('This note does not exist');
-  }
-
-  response.json(note);
+  });
 });
 
-const generateId = () => {
-  const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
-  return maxId + 1;
-};
+// const generateId = () => {
+//   const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
+//   return maxId + 1;
+// };
 
 app.post('/api/notes', (request, response) => {
   const body = request.body;
 
-  if (!body.content) {
+  if (body.content === undefined) {
     return response.status(400).json({
       error: 'Content Missing',
     });
   }
 
-  const note = {
+  const note = new Note({
     content: body.content,
-    important: Boolean(body.important) || false,
-    date: new Date(),
-    id: generateId(),
-  };
+    important: body.important || false,
+  });
 
-  notes = notes.concat(note);
-
-  response.json(note);
+  note.save().then((savedNote) => {
+    response.json(savedNote);
+  });
 });
 
 app.delete('/api/notes/:id', (request, response) => {

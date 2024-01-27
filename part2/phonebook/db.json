@@ -2,7 +2,7 @@
   "persons": [
     {
       "name": "Arto Hellas",
-      "number": "040-123456",
+      "number": "332-332-3244",
       "id": "1"
     },
     {
@@ -29,11 +29,6 @@
       "id": "109e",
       "name": "Daytona",
       "number": "223-322-3232"
-    },
-    {
-      "id": "4c1f",
-      "name": "Lindsey",
-      "number": "232-322-3223"
     }
   ]
 }
