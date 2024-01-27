@@ -5,12 +5,6 @@ if (process.argv.length < 3) {
   process.exit(1);
 }
 
-const password = process.argv[2];
-
-const url = `mongodb+srv://dashlin:${password}@cluster0.7ukch3s.mongodb.net/phonebookApp?retryWrites=true&w=majority
-
-`;
-
 mongoose.set('strictQuery', false);
 mongoose.connect(url);
 
