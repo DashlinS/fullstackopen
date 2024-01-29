@@ -4,6 +4,7 @@ if (process.argv.length < 3) {
   console.log('give password as argument');
   process.exit(1);
 }
+const url = 'moved url';
 
 mongoose.set('strictQuery', false);
 mongoose.connect(url);
@@ -37,7 +38,7 @@ if (process.argv.length === 3) {
   });
 } else {
   // Generating new notes
-  person.save().then((result) => {
+  person.save().then(() => {
     console.log(`added ${person.name} ${person.number} to phonebook`);
     mongoose.connection.close();
   });

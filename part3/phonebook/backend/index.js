@@ -1,7 +1,6 @@
 const express = require('express');
 const morgan = require('morgan');
 const cors = require('cors');
-const mongoose = require('mongoose');
 require('dotenv').config();
 
 const Person = require('./models/people');
@@ -14,7 +13,7 @@ morgan.token('ob', function (req) {
 
 app.use(
   morgan(
-    `:method :url :status :res[content-length] - :response-time ms :req[header] :ob`
+    ':method :url :status :res[content-length] - :response-time ms :req[header] :ob'
   )
 );
 
@@ -66,10 +65,9 @@ app.get('/persons/:id', (request, response, next) => {
     })
     .catch((error) => next(error));
 });
-
 app.delete('/persons/:id', (request, response, next) => {
   Person.findByIdAndDelete(request.params.id)
-    .then((result) => {
+    .then(() => {
       response.status(204).end();
     })
     .catch((error) => next(error));
