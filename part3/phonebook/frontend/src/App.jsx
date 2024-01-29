@@ -36,24 +36,36 @@ const App = () => {
     e.preventDefault();
     const personIncluded = persons.filter(person => person.name == capitalizeName(personName))
     // conditional to check if person name exists in phone book
+    const personObject = {
+      name: capitalizeName(personName),
+      number: number
+    } 
+
+    const numberFormatValidation = personObject.number.match(/\d{2}-\d{6}/)
+
     if(personIncluded.length === 0){
-
-      const personObject = {
-        name: capitalizeName(personName),
-        number: number
-      } 
-
-      //Post Request
-      createPersons(personObject)
-      .then(
-        setSuccessMessage(`Added ${personName}!`),
+      if(personObject.name.length >= 3 && numberFormatValidation){
+        //Post Request
+        createPersons(personObject)
+        .then(initialCreate => 
+          setPersons(persons.concat(initialCreate)), 
+          setSuccessMessage(`Added ${personName}!`),
+          setTimeout(() => {
+            setSuccessMessage(null)
+          }, 2000),
+          
+        )
+        .catch(error => {
+          //how to access error from backend
+          console.log(error.response.data.error)
+        })
+      } else {
+        !numberFormatValidation ? setErrorMessage('The number needs to be in the correct format!') :
+        setErrorMessage(`Person validation failed: ${personName} is shorter than the minimum allowed length(3)`)
         setTimeout(() => {
-          setSuccessMessage(null)
-        }, 2000),
-      )
-      .then(initialCreate => 
-        setPersons(persons.concat(initialCreate)), 
-      )
+          setErrorMessage(null)
+        }, 2000)
+      }
     } else {
       const confirm = window.confirm(`${personName} is already added to Phonebook, replace the old number with a new one?`)
 
@@ -62,15 +74,25 @@ const App = () => {
         const updateNum = {...personIncluded[0], number: number}
         const updatePerson = persons.map(obj => obj.id === id ? updateNum : obj)
         
-        //Update Request
-        updatePersons(id, updateNum)
-        .then(
-          setPersons(updatePerson),
-          setSuccessMessage(`Updated ${personName}'s current number.`),
-          setTimeout(() => {
-            setSuccessMessage(null)
-          }, 2000)
-        )
+        if(personObject.number.length > 7 && numberFormatValidation){
+          //Update Request
+          updatePersons(id, updateNum)
+          .then(
+            setPersons(updatePerson),
+            setSuccessMessage(`Updated ${personName}'s current number.`),
+            setTimeout(() => {
+              setSuccessMessage(null)
+            }, 2000)
+          )
+          .catch(error => {
+            console.log(error.response.data.error)
+          })
+        } else {
+          setErrorMessage(`The number input is invalid, please select a number with at least 8 digits.`)
+        setTimeout(()=>{
+          setErrorMessage(null)
+        }, 2000)
+        }
       }
     }
     

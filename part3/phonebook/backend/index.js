@@ -8,15 +8,15 @@ const Person = require('./models/people');
 
 const app = express();
 
-// morgan.token('ob', function (req) {
-//   return `${JSON.stringify(req.body)}`;
-// });
+morgan.token('ob', function (req) {
+  return `${JSON.stringify(req.body)}`;
+});
 
-// app.use(
-//   morgan(
-//     `:method :url :status :res[content-length] - :response-time ms :req[header] :ob`
-//   )
-// );
+app.use(
+  morgan(
+    `:method :url :status :res[content-length] - :response-time ms :req[header] :ob`
+  )
+);
 
 const requestLogger = (request, response, next) => {
   console.log('Method:', request.method);
@@ -36,12 +36,6 @@ app.use(requestLogger);
 app.use(cors());
 
 let persons = [];
-
-//create generate id function
-// const generateId = () => {
-//   const maxId = persons.length > 0 ? Math.floor(Math.random() * 1000) + 1 : 0;
-//   return maxId;
-// };
 
 app.get('/info', (request, response) => {
   const date = new Date();
@@ -81,7 +75,7 @@ app.delete('/persons/:id', (request, response, next) => {
     .catch((error) => next(error));
 });
 
-app.post('/persons', (request, response) => {
+app.post('/persons', (request, response, next) => {
   const body = request.body;
 
   if (body.name === undefined) {
@@ -107,10 +101,13 @@ app.post('/persons', (request, response) => {
     });
   }
 
-  newPerson.save().then((savedPerson) => {
-    console.log('new person saved');
-    response.json(savedPerson);
-  });
+  newPerson
+    .save()
+    .then((savedPerson) => {
+      console.log('new person saved');
+      response.json(savedPerson);
+    })
+    .catch((error) => next(error));
 
   morgan.token('param', function (req, res, param) {
     return req.params[param];
@@ -118,14 +115,13 @@ app.post('/persons', (request, response) => {
 });
 
 app.put('/persons/:id', (request, response, next) => {
-  const body = request.body;
+  const { name, number } = request.body;
 
-  const person = {
-    name: body.name,
-    number: body.number,
-  };
-
-  Person.findByIdAndUpdate(request.params.id, person, { new: true })
+  Person.findByIdAndUpdate(
+    request.params.id,
+    { name, number },
+    { new: true, runValidators: true, context: 'query' }
+  )
     .then((updatedPhoneBook) => {
       response.json(updatedPhoneBook);
     })
@@ -140,8 +136,9 @@ const errorHandler = (error, request, response, next) => {
 
   if (error.name === 'CastError') {
     return response.status(400).send({ error: 'malformatted id' });
+  } else if (error.name === 'ValidationError') {
+    return response.status(400).json({ error: error.message });
   }
-
   next(error);
 };
 

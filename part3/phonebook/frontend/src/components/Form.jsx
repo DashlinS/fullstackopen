@@ -15,9 +15,8 @@ function Form({ onAddName, personName, setPersonName, setNumber, number }) {
           Number: 
           <input
             type='tel'
-            placeholder='000-000-0000'
-            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             required
+            placeholder="00-000000"
             value={number} 
             onChange={(e) => setNumber(e.target.value)}
           />
