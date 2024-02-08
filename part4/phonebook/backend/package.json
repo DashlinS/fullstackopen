@@ -1,0 +1,31 @@
+{
+  "name": "phonebook-backend",
+  "version": "1.0.0",
+  "description": "phonebook exercise",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --fix --ext .js,.jsx .",
+    "build:ui": "rm -rf dist && cd ../frontend/ && npm run build && cp -r dist ../backend",
+    "deploy": "fly deploy",
+    "deploy:full": "npm run build:ui && npm run deploy",
+    "logs:prod": "fly logs"
+  },
+  "author": "dashlin sermeil",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.1.0",
+    "morgan": "^1.10.0",
+    "nodemon": "^3.0.3"
+  },
+  "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.0",
+    "eslint": "^8.56.0"
+  }
+}

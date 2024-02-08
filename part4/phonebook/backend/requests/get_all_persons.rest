@@ -1,0 +1,10 @@
+GET http://localhost:3001/persons/
+
+###
+POST http://localhost:3001/persons
+content-type: application/json
+
+{
+  "name": "Julie",
+  "number": "465-5544332"
+}
